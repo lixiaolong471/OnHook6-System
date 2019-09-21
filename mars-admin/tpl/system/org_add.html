@@ -1,0 +1,77 @@
+<form name="form-contact" class="form-validation" ng-submit = "$ctrl.ok()" ng-click="$ctrl.isOpen = false">
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{$ctrl.WindowsTitle}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+        <div class="panel-body">
+            <div class="form-group">
+                <label>部门名称<em class="text-muted">(必须输入，20个字符以内)</em></label>
+                <input type="text" class="form-control" placeholder="请输入" ng-model="$ctrl.orga.orgaName" required >
+            </div>
+            <div class="form-group clearfix">
+                <label>上级部门<em class="text-muted">(必须输入，20个字符以内)</em></label>
+             <!--   <div  uib-dropdown is-open="status.isopen">
+                    <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                        Button dropdown <span class="caret"></span>
+                    </button>
+                    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem"><a>Action</a></li>
+                        <li role="menuitem"><a>Another action</a></li>
+                        <li role="menuitem"><a>Something else here</a></li>
+                        <li role="menuitem"><a>Separated link</a></li>
+                    </ul>
+                </div>-->
+                <div class="combox-tree clearfix">
+                    <div class="selected-box" ng-click="$ctrl.openUl($event)">
+                        <input type="text" class="form-control" placeholder="请输入" ng-model="$ctrl.depart" required >
+                        <span class="caret"></span>
+                    </div>
+                    <div class="dropdown-menu" ng-show="$ctrl.isOpen" >
+                        <ul class="ul-tree" >
+                            <li ng-repeat="item in $ctrl.organList" ng-click="$ctrl.selectItem(item,$event)">
+                                <a >
+                                    <span class="em-span" ng-repeat="n in utils.getNumber(item.level -1) track by $index"></span>
+                                    <i class="fa" ng-class="{'fa-file-o':!item.child,'fa-plus':(item.child && item.child.length > 0 && !item.close),'fa-minus':(item.child && item.child.length > 0 && item.close)}"
+                                       ng-click="$ctrl.open(item,$event)"></i>{{item.orgaName}}</a>
+                                <ul class="ul-tree" ng-if="item.child.length" ng-show="item.close"
+                                    ng-include="'selectChildTree'"
+                                    ng-init="cate=item.child">
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+
+            </div>
+            <div class="form-group clearfix">
+                <label>联系电话<em class="text-muted">(必须输入，20个字符以内)</em></label>
+                <input type="text" class="form-control" placeholder="请输入" ng-model="$ctrl.orga.tel" >
+            </div>
+            <div class="form-group">
+                <label>地址<em class="text-muted">(必须输入，20个字符以内)</em></label>
+                <input type="text" class="form-control" placeholder="请输入" ng-model="$ctrl.orga.address">
+            </div>
+            <div class="form-group">
+                <label>备注<em class="text-muted"></em></label>
+                <textarea rows="3" class="form-control" placeholder="请输入" ng-model="$ctrl.orga.remark"></textarea>
+            </div>
+            <script id="selectChildTree" type="text/ng-template">
+                <li ng-repeat="item in cate" ng-click="$ctrl.selectItem(item,$event)">
+                    <a >
+                        <span class="em-span" ng-repeat="n in utils.getNumber(item.level -1) track by $index"></span>
+                        <i class ="fa" ng-click="$ctrl.open(item,$event)"
+                           ng-class="{'fa-file-o':!item.child,'fa-plus':(item.child && item.child.length > 0 && !item.close),'fa-minus':(item.child && item.child.length > 0 && item.close)}"
+                        ></i>{{item.orgaName}}</a>
+                    <ul class="ul-tree" ng-if="item.child.length" ng-show="item.close"
+                        ng-include="'selectChildTree'"
+                        ng-init="cate=item.child">
+                    </ul>
+                </li>
+            </script>
+        </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info w-xs" type="submit">确定</button>
+    <button class="btn btn-default w-xs" type="button" ng-click="$ctrl.cancel()">取消</button>
+</div>
+</form>

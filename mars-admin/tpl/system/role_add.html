@@ -1,0 +1,33 @@
+<form name="form" class="form-validation" id="test" ng-submit="$ctrl.ok()">
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{$ctrl.WindowsTitle}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+        <div class="panel-body">
+            <div class="form-group">
+                <label>角色名称<em class="text-muted">(必须输入，20个字符以内)</em></label>
+                <input type="text" class="form-control" placeholder="角色名称" ng-model="$ctrl.role.roleName" required  maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label>权限</label>
+                <div class="row line-lg" ng-repeat="item in $ctrl.authorityList">
+                    <label class="col-sm-2 control-label text-md">{{item.authorityName}}</label>
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks" ng-repeat="childItem in item.child" style="margin-left: 0; margin-right: 10px">
+                            <input type="checkbox" value="{{childItem.id}}" ng-click="$ctrl.check(childItem,item)" ng-checked="childItem.selected"> <i></i>{{childItem.authorityName}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>备注</label>
+                <textarea rows="3" class="form-control" ng-model="$ctrl.role.remark"></textarea>
+            </div>
+        </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info w-xs" type="submit">确定</button>
+    <button class="btn btn-default w-xs" type="button" ng-click="$ctrl.cancel()">取消</button>
+</div>
+</form>

@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <form name="form-contact" class="form-validation" ng-submit = "$ctrl.addTime()">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">账户续期</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div class="panel-body">
+                <div class="form-group  pull-in clearfix">
+                    <div class="col-sm-12">
+                        <label>时间</label>
+                        <input type="text" class="form-control" placeholder="时间长度 " ng-model="$ctrl.addDay" required  maxlength="3">
+                        <label><em class="text-muted">以当前时间点为准，需要续期的天数，例如：1，代表设置为1天后过期。</em></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info w-xs" type="submit">确 定</button>
+            <button class="btn btn-danger w-xs" type="button" ng-click="$ctrl.disable()">禁 用</button>
+            <button class="btn btn-default w-xs" type="button" ng-click="$ctrl.cancel()">取 消</button>
+        </div>
+    </form>
+</div>

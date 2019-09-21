@@ -1,0 +1,7 @@
+<select class="form-control w-sm pull-left" placeholder="省"  ng-disabled="{{disabled}}" ng-model="_province" ng-change="provinceChange()" ng-options="item.value for item in provinceList"></select>
+<select class="form-control w-sm pull-left m-l-xs" placeholder="市"  ng-disabled="{{disabled}}" ng-model="_city" ng-change="cityChange()"  ng-hide="visibleCity" ng-options="item.value for item in cityList"></select>
+<select class="form-control w-sm pull-left m-l-xs" placeholder="区" ng-disabled="{{disabled}}"  ng-model="_district" ng-change="areaChange()" ng-hide="visibledistrict" ng-options="item.value for item in areaList"></select>
+
+
+
+

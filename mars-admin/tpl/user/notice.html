@@ -1,0 +1,42 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="NoticeController as $ctrl">
+        <form name="form-contact" class="form-validation" ng-submit = "$ctrl.save()">
+            <div class="modal-body" id="modal-body">
+                <div class="panel-body">
+                    <div class="form-group  pull-in clearfix">
+                        <div class="col-sm-2 text-right">名称:</div>
+                        <div class="col-sm-8">
+                            {{$ctrl.notice.name}}
+                        </div>
+                    </div>
+                    <div class="form-group  pull-in clearfix">
+                        <div class="col-sm-2 text-right">更新时间:</div>
+                        <div class="col-sm-8">
+                            {{$ctrl.notice.updateTime}}
+                        </div>
+                    </div>
+                    <div class="form-group  pull-in clearfix">
+                        <div class="col-sm-2 text-right">内容:</div>
+                        <div class="col-sm-8">
+                        <textarea class="form-control" rows="20" placeholder="请输入" ng-model="$ctrl.notice.content"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-info w-xs" type="submit">确定</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+

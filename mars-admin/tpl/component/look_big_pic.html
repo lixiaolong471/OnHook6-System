@@ -1,0 +1,13 @@
+<div class="look-pic-modal">
+    <div class="modal-header">
+        <h3 class="modal-title text-base" id="modal-title"><span class="title">查看大图</span>
+            <a class="cm-turn clockwise-icon" ng-click="turnClockWise()"></a>
+            <a class="cm-turn anti-clockwise" ng-click="turnAntiClickWise()"></a>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+                <span aria-hidden="true">&times;</span>
+            </button></h3>
+    </div>
+    <div class="big-pic-wrap">
+        <img ng-src="{{imgUrl}}" class="big-pic">
+    </div>
+</div>

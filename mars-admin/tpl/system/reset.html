@@ -1,0 +1,28 @@
+<div class="login-box reset-wap" ng-app="app" ng-controller="ResetController">
+    <div class="login-wrap">
+        <div class="reset-title">重置密码</div>
+        <div class="error">{{errorMessage}}</div>
+        <div class="input-row">
+            <img src="../../img/login/account.png" class="log-tag">
+            <input type="text" class="cm-txt" id="account" placeholder="请输入账户" ng-model="user.loginName">
+        </div>
+        <div class="input-row">
+            <img src="../../img/login/password.png" class="log-tag">
+            <input type="password" class="cm-txt" id="pwd" placeholder="请输入原始密码" ng-model="user.oldPasswd">
+        </div>
+        <div class="input-row">
+            <img src="../../img/login/newpwd.png" class="log-tag">
+            <input type="password" class="cm-txt" id="newPwd" placeholder="请输入新密码" ng-model="user.newPasswd">
+        </div>
+        <div class="input-row">
+            <img src="../../img/login/code.png" class="log-tag code-tag">
+            <input type="text" class="cm-txt code" id="imgCode" placeholder="请输入验证码" ng-model="user.authCode" ng-keyup="enter($event)">
+            <img src="/sys/system/login/captcha.do" id="codImg" ng-click="refresh()">
+        </div>
+        <div class="btn-box">
+            <button type="button" class="reset-cm-btn btn-cancel" ng-click="cancel()">取&nbsp;&nbsp;&nbsp;&nbsp;消</button>
+            <button type="button" class="reset-cm-btn btn-sure" ng-click="reset()">确&nbsp;&nbsp;&nbsp;&nbsp;定</button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+
+    <div class="panel panel-default" ng-controller="OrgController as $ctrl">
+        <div class="row  m-sm w-auto">
+            <!--div class="col-sm-3">
+                <tree tree-data="$ctrl.userTree" ng-model="$ctrl.userId"></tree>
+            </div-->
+            <!--
+            <div class="col-sm-8"></div>-->
+            <div class="col-sm-12 text-right">
+                <button type="button" class="btn btn-info btn-add" ng-click="$ctrl.addOrg()" data-toggle="modal"
+                        data-target=".bs-example-modal-lg"><i class="icon-plus"></i> 新增机构
+                </button>
+               <!-- <button type="button" class="btn btn-default btn-delete"><i class="icon-trash"></i> 删除</button>-->
+                <!--button type="button" class="btn btn-default btn-export"><i class="fa fa-file-excel-o"></i> 导出</button-->
+            </div>
+        </div>
+        <div class="table-responsive">
+            <script id="childTree" type="text/ng-template">
+                <table class="table table-striped b-t b-light table-tree" ng-repeat="item in cate">
+                    <tbody>
+                    <tr>
+                        <td width="30%">
+                            <span class="em-span" ng-repeat="n in utils.getNumber(item.level -1) track by $index"></span>
+                            <a class="fa"
+                               ng-class="{'fa-file-o':!item.child,'fa-plus-square':(item.child && item.child.length > 0 && !item.close),'fa-minus-square':(item.child && item.child.length > 0 && item.close)}"
+                               ng-click="$ctrl.open(item,$event)"
+                            >
+                            </a>
+                            <a class="btn-link" ng-click="$ctrl.addOrg(item.id)">{{item.orgaName}}</a>
+                        </td>
+                        <td width="30%">{{item.address}}</td>
+                        <td width="10%">{{item.tel}}</td>
+                        <td width="10%">{{item.createTime}}</td>
+                        <td width="10%">{{item.updateTime}}</td>
+                        <td width="10%">
+                            <label class="i-switch m-t-xs m-r" >
+                                <input type="checkbox" checked ng-click="$ctrl.isDisable(user.id)">
+                                <input type="checkbox" checked ng-click="$ctrl.disable(item.id)">
+                                <i></i>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" class="big-td" ng-if="item.child.length" ng-include="'childTree'" ng-init="cate=item.child" ng-show="item.close"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </script>
+            <table class="table table-striped b-t b-light table-tree">
+                <thead>
+                <tr>
+                    <th width="30%">机构名称</th>
+                    <th width="30%">机构地址</th>
+                    <th width="10%">联系电话</th>
+                    <th width="10%">创建时间</th>
+                    <th width="10%">最后更新时间</th>
+                    <th width="10%">启用</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in $ctrl.organList">
+                    <td colspan="7" class="big-td">
+                        <table class="table table-striped b-t b-light table-tree">
+                            <tbody>
+                            <tr>
+                                <td width="30%">
+                                    <a class="fa"
+                                       ng-class="{'fa-file-o':!item.child,'fa-plus-square':(item.child && item.child.length > 0 && !item.close),'fa-minus-square':(item.child && item.child.length > 0 && item.close)}"
+                                       ng-click="$ctrl.open(item,$event)"
+                                    >
+                                    </a>
+                                    <a class="btn-link" ng-click="$ctrl.addOrg(item.id)">{{item.orgaName}}</a></td>
+                                <td width="30%">{{item.address}}</td>
+                                <td width="10%">{{item.tel}}</td>
+                                <td width="10%">{{item.createTime}}</td>
+                                <td width="10%">{{item.updateTime}}</td>
+                                <td width="10%">
+                                    <label class="i-switch m-t-xs m-r" >
+                                        <input type="checkbox" ng-model="item.available" ng-click="$ctrl.disable(item.id)">
+                                        <i></i>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7" class="big-td" ng-if="item.child.length" ng-include="'childTree'" ng-init="cate=item.child" ng-show="item.close"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="no-data" ng-show="$ctrl.userPage.length <= 0">
+                <i class="fa fa-smile-o"></i>
+                <p>没有数据</p>
+            </div>
+        </div>
+    </div>
+</div>

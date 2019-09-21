@@ -1,0 +1,43 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="MailController as $ctrl">
+        <div class="form-horizontal form-validation panel-body" >
+            <div class="row m-sm font-bold">
+                <div class="col-md-1">
+                    Code
+                </div>
+                <div class="col-md-2">
+                    名称
+                </div>
+                <div class="col-md-7">
+                    内容
+                </div>
+                <div class="col-md-2">
+                    备注
+                </div>
+            </div>
+            <div class="row m-sm" ng-repeat="tpl in $ctrl.mailList">
+                <div class="col-md-1">
+                    {{tpl.code}}
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control w-full" placeholder="请输入" ng-model="tpl.name" required >
+                </div>
+                <div class="col-md-7">
+                    <input type="text" class="form-control w-full" placeholder="请输入" ng-model="tpl.content" required >
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control w-full" placeholder="请输入" ng-model="tpl.remark" required >
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer text-right bg-light lter">
+            <button type="submit" class="btn btn-success">保存</button>
+        </footer>
+    </div>
+</div>

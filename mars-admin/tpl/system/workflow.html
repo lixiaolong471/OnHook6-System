@@ -1,0 +1,64 @@
+<div class="hbox hbox-auto-xs" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="WorkflowController as $ctrl">
+    <div class="col w-md w-auto-xs bg-light lter b-r">
+        <div class="wrapper b-t">
+            <ul class="list-group">
+                <li class="list-group-item" ng-click="$ctrl.viewDetail(item.id)" ng-repeat="item in $ctrl.workflowList" ng-class="{'bg-light':$ctrl.selectedId == item.id}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{item.code}}
+                        </div>
+                        <div class="col-md-6">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="wrapper">
+            <div class="panel panel-default">
+                <div class="row  m-sm">
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-6">
+                        修改时间：<label class="m-t-sm w-xs">{{$ctrl.workflow.updateTime}}</label>
+                        修改人员：<label class="m-t-sm w-xs">{{$ctrl.workflow.updater}}</label>
+                    </div>
+                    <div class="col-sm-2">
+                    </div>
+                </div>
+                <div class="panel-body" style="min-height: 500px;background: #f7f7f7;">
+                    <div class="container">
+                        <div class="cLeft fl">
+                            <div class="leftStart"></div>
+                            <div class="leftBox" ng-repeat="node in $ctrl.workflow.nodes">
+                                <div class="circle"></div>
+                                <div class="vertical"></div>
+                            </div>
+                        </div>
+                        <div class="cRight fl">
+                            <div class="branch" ng-repeat="node in $ctrl.workflow.nodes">
+                                <div ng-class="{'branchTail':node.nodeType!=1,'branchTop':node.nodeType==1}">
+                                    <div class="topClose" ng-hide="node.nodeType != 1" ng-click="$ctrl.delNode(node.id)">
+                                        <img class="close fr" src="img/close.png"/>
+                                    </div>
+                                    <div class="branchTitle">{{node.name}}</div>
+                                </div>
+                                <a href="javascript:void(0)" ng-hide="node.nodeType != 1" class="branchBottom" ng-click="$ctrl.editNode(node)">编辑</a>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,42 @@
+<form name="form-contact" class="form-validation" ng-submit = "$ctrl.save()">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{$ctrl.WindowsTitle}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="panel-body">
+            <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                    <label>标题<em class="text-muted">(必须输入，20个字符以内)</em></label>
+                    <input type="text" class="form-control" placeholder="请输入" ng-model="$ctrl.advertisement.title" required  maxlength="50">
+                </div>
+                <div class="col-sm-6">
+                    <label>子标题<em class="text-muted">(必须输入，50个字符以内)</em></label>
+                    <input type="text" class="form-control" placeholder="请输入" ng-model="$ctrl.advertisement.subTitle" required  maxlength="50">
+                </div>
+            </div>
+            <div class="form-group  pull-in clearfix">
+                <div class="col-sm-6">
+                    <label>图片<em class="text-muted">(必须输入，11个字符以内)</em></label>
+                 <!--   <input type="file" class="form-control" ng-model="$ctrl.advertisement.coverImg" required  maxlength="11">-->
+                    <upload-pic  isshow="false" is-show-icon="true" radius="0"placeholder="'上传图片'" url=" $ctrl.advertisement.coverImg" width="300" height="100" ></upload-pic>
+                </div>
+                <div class="col-sm-6">
+                    <label>模块</label>
+                    <select ng-model="$ctrl.advertisement.section" class="form-control" ng-options="code.value as code.name for code in $ctrl.codeList"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>URL<em class="text-muted">(100个字符以内)</em></label>
+                <input type="text"  class="form-control" placeholder="请输入" ng-model="$ctrl.advertisement.url" >
+            </div>
+            <div class="form-group">
+                <label>备注</label>
+                <textarea class="form-control" rows="3" placeholder="请输入" ng-model="$ctrl.advertisement.remark"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info w-xs" type="submit">确定</button>
+        <button class="btn btn-default w-xs" type="button" ng-click="$ctrl.cancel()">取消</button>
+    </div>
+</form>

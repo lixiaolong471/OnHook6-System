@@ -1,0 +1,623 @@
+.cm-pager.fixed{
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+/*邀约记录样式*/
+.data-head{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee5e7;
+}
+.data-body{
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 10px;
+}
+.data-body .row{
+    padding-bottom: 5px;
+}
+
+/*公共模态对话框*/
+.cm-tips-modal .modal-body .modal-tips-icon{
+    font-size: 48px;
+}
+
+/*查看大图*/
+.look-pic-modal .modal-dialog {
+   width: 1200px;
+}
+.look-pic-modal .big-pic-wrap{
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    min-height: 500px;
+    _height:500px;
+    max-height: 600px;
+    line-height: 500px;
+    padding: 10px;
+}
+
+.look-pic-modal .big-pic-wrap img{
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.look-pic-modal .modal-header{
+    text-align: center;
+}
+
+.look-pic-modal .modal-header{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.look-pic-modal .modal-title{
+    position: relative;
+}
+.look-pic-modal .modal-title .title{
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.cm-turn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+}
+.cm-turn.clockwise-icon{
+    background: url("../img/icon/clockwise-icon.png") no-repeat center;
+    margin-right: 10px;
+}
+
+.cm-turn.anti-clockwise{
+    background: url("../img/icon/anti-clockwise.png") no-repeat center;
+}
+
+/*表格-机构树*/
+.table-tree{
+    margin-bottom:0;
+}
+.table-tree .em-span{
+    width: 25px;
+    height: 15px;
+    display: inline-block;
+}
+.table-tree .big-td {
+    border: 0;
+    padding: 0;
+}
+
+.table-striped .link:hover{
+    text-decoration: underline;
+    color: #428bca;
+}
+
+.combox-tree {
+    position: relative;
+    height: 34px;
+}
+.combox-tree .selected-box{
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.combox-tree .selected-box .caret{
+   position: absolute;
+    right: 10px;
+    top: 18px;
+}
+.combox-tree .dropdown-menu{
+    top: 30px;
+    width: 100%;
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.ul-tree{
+    -webkit-padding-start: 0px;
+    background: #fff;
+}
+.ul-tree li{
+    list-style-type: none;
+}
+.ul-tree li a:hover{
+    background: #23b7e5;
+}
+.ul-tree li a.active{
+    background: #23b7e5;
+    color: #fff;
+}
+
+.ul-tree li .em-span{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+
+.ul-tree li a{
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    width: 100%;
+    padding-left: 20px;
+}
+.ul-tree li i{
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+
+/*表格没有数据时的样式*/
+.no-data{
+    text-align: center;
+    height: 500px;
+    padding-top: 180px;
+}
+.no-data .fa-smile-o{
+    font-size: 72px;
+}
+.no-data >p{
+    font-size: 24px;
+}
+
+
+/*上传图片组件*/
+.uploadimg-box{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.uplodaimg .uploadimg-box > img{
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.uplodaimg .uploadimg-box .changeimg{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e1e3eb;
+    color: #a3abbf;
+    line-height: normal;
+}
+.uplodaimg .uploadimg-box .changeimg .upload-tips{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 11px;
+}
+
+.uplodaimg .uploadimg-box .changeimg .upload-tips .fa-upload{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.uplodaimg .uploadimg-box .changeimg > input{
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.uplodaimg .uploadimg-box .changeimg.hasImg{
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+}
+
+/*上传弹出框*/
+.default-upload{
+    height: 346px;
+    width:100%;
+    display: table;
+}
+.default-upload .default-upload-cn{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.default-upload .col-lg-12{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.upload-modal  .icon-picture{
+    font-size: 72px;
+}
+
+.upload-modal .panel-heading{
+    overflow: hidden;
+}
+
+.upload-modal .panel-heading .upload-tips{
+    width: 640px;
+    float: left;
+    height: 34px;
+    line-height: 34px;
+}
+.upload-modal .panel-heading .btn-list{
+    float: right;
+}
+.upload-modal .panel-heading .btn-list .upload-btn{
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+}
+.upload-modal .panel-heading .btn-list .upload-btn .webuploader-pick{
+    padding: 7px 15px;
+}
+.upload-modal .panel-heading .btn-list .upload-btn input[type="file"]{
+    width: 86px;
+}
+.upload-modal .panel-heading .upload-ready-tips {
+    /*display: none;*/
+}
+
+.upload-modal .panel-heading .upload-process-tips{
+    display: none;
+}
+.upload-modal .panel-heading .upload-process-tips .progress{
+    width: 60%;
+    float: left;
+    margin-top: 11px;
+}
+
+.upload-modal .panel-heading .upload-process-tips .tips{
+    float: left;
+    margin-left: 5px;
+}
+
+.upload-modal .panel-heading .upload-finish-tips{
+    display: none;
+}
+
+.continue-upload{
+    height: 346px;
+}
+
+.continue-upload .filelist{
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.continue-upload .panel-body{
+    padding: 0;
+}
+
+.continue-upload .filelist li{
+    float: left;
+    width: 113px;
+    height: 113px;
+    text-align: center;
+    margin: 9px 0 0 8px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    font-size: 12px;
+    cursor: pointer;
+    background: #cccccc;
+}
+.continue-upload .filelist li .title{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 5px;
+    text-indent: 5px;
+    text-align: left;
+}
+
+.continue-upload .filelist li.no-upload:hover .del-box{
+    display: block;
+}
+
+.continue-upload .filelist li .img-box{
+    position: absolute;
+    left: 0;
+    top:0;
+    width:100%;
+    height: 100%;
+}
+
+.continue-upload .filelist li .img-box >img{
+    width: 100%;
+    height: 100%;
+}
+
+.continue-upload .filelist li .progress{
+    position: absolute;
+    z-index:2;
+    left: 0;
+    bottom: 0;
+    display: none;
+}
+
+.continue-upload .filelist li .error{
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    position: absolute;
+    z-index: 3;
+    background: #f43838;
+    color: #fff;
+    display: none;
+}
+
+.continue-upload .filelist li .del-box{
+    position: absolute;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#80000000', endColorstr='#80000000') \0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 300;
+    height: 30px;
+    display: none;
+}
+
+.continue-upload .filelist li .del-box .glyphicon-trash{
+    float: right;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.continue-upload .filelist li .fa-check-circle{
+    position: absolute;
+    z-index: 400;
+    bottom: 5px;
+    right: 5px;
+    color: #27c24c;
+    display: none;
+}
+
+
+#uploadFile .webuploader-pick{
+    font-size: 18px;
+    background: #00b7ee;
+    border-radius: 3px;
+    line-height: 44px;
+    padding: 0 30px;
+    color: #fff;
+    display: inline-block;
+    margin: 20px auto;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.file-panel{
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.table-responsive .progress{
+    margin-bottom: 0;
+}
+
+/*登录样式*/
+.login-box{
+    width: 100%;
+    height: 100%;
+    background: #333333;/*url("../img/login/bg.jpg") no-repeat center*/;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+.login-box.reset-wap{
+    background: url("../img/login/bg2.jpg") no-repeat center;
+}
+.login-box .login-wrap{
+    width: 458px;
+    height: 400px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-top: -275px;
+    margin-left: -229px;
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+}
+.login-box .login-wrap .title{
+    margin-top: 80px;
+    margin-bottom: 22px;
+}
+
+.login-box .login-wrap .input-row{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    height: 50px;
+}
+.login-box .login-wrap .input-row .log-tag{
+    position: absolute;
+    top: 10px;
+    left: 58px;
+    z-index: 2;
+}
+
+.login-box .login-wrap .cm-txt{
+    width: 394px;
+    height: 50px;
+    line-height: 50px;
+    background: #eee;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    z-index: 1;
+    padding: 0 5px 0 65px;
+    border: 0;
+    text-align: left;
+    font-size: 18px;
+    color: #919191;
+}
+.login-box .login-wrap .cm-txt.code{
+    padding-right: 90px;
+}
+
+.login-box .login-wrap #codImg{
+    position: absolute;
+    right: 54px;
+    top: 9px;
+    cursor: pointer;
+    z-index: 2;
+}
+.login-box .login-wrap .login-btn{
+    width: 350px;
+    height: 60px;
+    background: #333;
+    font-size: 24px;
+    border-radius: 30px;
+    border: 0;
+    display: inline-block;
+    color: #fff;
+}
+.reset-wap .reset-cm-btn{
+    width: 174px;
+    height: 60px;
+   /* background: #39a8ff;*/
+    font-size: 24px;
+    border-radius: 30px;
+    border: 0;
+    display: inline-block;
+    color: #fff;
+}
+
+.reset-cm-btn.btn-cancel{
+    background: #fff;
+    color: #c4c3c3;
+    border: 1px solid #cfcfcf;
+    margin-right: 38px;
+}
+
+.reset-cm-btn.btn-sure{
+    background: #39a8ff;
+    color: #fff;
+
+}
+.login-box .login-wrap .error{
+    color: #fe1b1b;
+    height: 50px;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: left;
+    padding-left: 58px;
+}
+
+.login-box .login-wrap .to-reset{
+    font-size: 18px;
+    text-align: right;
+    padding-right: 54px;
+    margin-bottom: 32px;
+    margin-top: -10px;
+}
+.login-box .login-wrap .to-reset a{
+    color: #1678fd;
+}
+.reset-wap .reset-title{
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #282828;
+    font-size: 36px;
+}
+
+.reset-wap .btn-box{
+    margin-top: 33px;
+    width: 100%;
+    float: left;
+}
+
+/*treeview*/
+.treeview{
+    position: relative;
+}
+.treeview .selected-box{
+    position: relative;
+    overflow: hidden;
+}
+
+.treeview .selected-box .caret{
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    z-index: 99;
+}
+
+.treeview .dropdown-menu{
+    width: 100%;
+    display: block;
+    overflow: auto;
+    max-height: 400px;
+}
+
+ .tree-list{
+     padding-left: 14px;
+}
+
+.tree-list li{
+    list-style: none;
+}
+.tree-list li .fa-btn{
+    width: 14px;
+    height: 14px;
+}
+
+.tree-list li .fa-file-archive-o{
+  /*  margin-left: 5px;*/
+    margin-right: 2px;
+}
+
+.tree-list li .leaf:hover{
+    color: #19a9d5;
+}
+
+
+/*loading*/
+.load-tips-box{
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+}
+
+.load-tips-box .load-icon{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    width: 32px;
+    height: 32px;
+}

@@ -1,0 +1,43 @@
+<div class="treeview">
+    <div class="selected-box">
+        <input type="text" class="form-control"placeholder="请输入" ng-click="openDropdown($event)" ng-model="selectedName">
+        <span class="caret"></span>
+    </div>
+    <div class="dropdown-menu" ng-show="isOpen">
+        <ul class="tree-list">
+            <li ng-repeat="item in treeData">
+                <div>
+                    <a class="fa fa-btn"
+                       ng-click="openChild(item,$event)"
+                       ng-class="{'fa-folder-o':(item.child && item.child.length > 0 && !item.close),'fa-folder-open-o':(item.child && item.child.length > 0 && item.close)}">
+                    </a>
+                    <i class="fa" ng-class="{'':!item.leaf,'fa-file-text-o':item.leaf}"></i>
+                    <span ng-if="!item.leaf">{{item.name}}</span>
+                    <a ng-if="item.leaf"  class="leaf"  ng-click="selectPeopleNode(item,$event)">{{item.name}}</a>
+                </div >
+                <ul class="tree-list" ng-if="item.child.length" ng-show="!item.close"
+                    ng-include="'selectChildTree'"
+                    ng-init="cate=item.child">
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script id="selectChildTree" type="text/ng-template">
+        <li ng-repeat="item in cate">
+            <div>
+                <a class="fa fa-btn"
+                   ng-click="openChild(item,$event)"
+                   ng-class="{'fa-folder-o':(item.child && item.child.length > 0 && !item.close),'fa-folder-open-o':(item.child && item.child.length > 0 && item.close)}">
+                </a>
+                <i class="fa" ng-class="{'':!item.leaf,'fa-file-text-o':item.leaf}"
+                   ng-click="selectNode(item,$event)"></i>
+                <span ng-if="!item.leaf">{{item.name}}</span>
+                <a ng-if="item.leaf" class="leaf" ng-click="selectPeopleNode(item,$event)">{{item.name}}</a>
+            </div>
+            <ul class="tree-list" ng-if="item.child.length" ng-show="!item.close"
+                ng-include="'selectChildTree'"
+                ng-init="cate=item.child">
+            </ul>
+        </li>
+    </script>
+</div>

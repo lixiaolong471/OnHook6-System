@@ -1,0 +1,76 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="InfoController as $ctrl">
+        <div class="row  m-sm w-auto query-box">
+            <div class="col-sm-12" style="padding-left: 0;">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label>认证状态</label>
+                        <select ng-model="$ctrl.available" class="form-control input-sm" ng-change="$ctrl.query()">
+                            <option value="">-----全部-----</option>
+                            <option value="true">激活</option>
+                            <option value="false">停用</option>
+                        </select>
+                    </div>
+                    <div class="input-group" style="width: 300px">
+                        <input type="text" class="form-control input-sm" placeholder="姓名" ng-model="$ctrl.keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-sm btn-default" type="button" ng-click="$ctrl.query()"><i class="icon-magnifier"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive fixed-table-container">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>机器码</th>
+                    <th>序列号</th>
+                    <th>过期时间</th>
+                    <th>最后一次使用</th>
+                    <th>注册时间</th>
+                    <th>启用</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="info in $ctrl.infoList" on-finish-render>
+                    <td>{{info.name}}</td>
+                    <td>{{info.machineCode}}</td>
+                    <td>{{info.serialKey| placeholder}}</td>
+                    <td>{{info.expirationTime}}</td>
+                    <td>{{info.lastUseTime}}</td>
+                    <td>{{info.createTime}}</td>
+                    <td>
+                        <label class="i-switch m-t-xs m-r">
+                            <input type="checkbox" ng-model="info.available" ng-click="$ctrl.setAvailable(info.id)">
+                            <i></i>
+                        </label>
+                    </td>
+                    <td>
+                        <a class="btn-link m-r-sm" ng-click="$ctrl.setAvailable(info.id)">续 期</a>
+                        <a class="btn-link m-r-sm" ng-click="$ctrl.createKey(info.id)">激活</a>
+                        <a class="btn-link" ng-click="$ctrl.delete(info.id)">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="no-data" ng-show="$ctrl.infoList.length <= 0">
+                <i class="fa fa-smile-o"></i>
+                <p>没有数据</p>
+            </div>
+        </div>
+        <pagination total="$ctrl.total" page-change="$ctrl.toPage(pIndex,pSize)" page-size="$ctrl.pageSize" page-index="$ctrl.pageIndex"></pagination>
+    </div>
+</div>
+
+
+
+

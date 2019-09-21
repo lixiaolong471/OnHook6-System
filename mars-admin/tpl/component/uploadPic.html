@@ -1,0 +1,18 @@
+<div>
+    <div class="uplodaimg" >
+        <div class="uploadimg-box" ng-style="styles">
+            <img ng-src="{{url}}" alt="" ng-style="borderRadius">
+            <label  class="changeimg" ng-show="!isshow" ng-style="borderRadius"
+                    ng-class="{'hasImg':url}" ng-click="openUpload()">
+                <div class="upload-tips" ng-style="tipsStyle">
+                    <i class="fa fa-upload" ng-show="isShowIcon"></i>
+                    <p>{{placeholder ? placeholder : '点击上传'}}</p>
+                    <i class="fa fa-eye" ng-show="url" ng-click="utils.lookBigPic(url,$event)"
+                       style="position: absolute;right: 5px;bottom: 0px; font-size: 20px"></i>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>
+
+

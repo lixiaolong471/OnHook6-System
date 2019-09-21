@@ -1,0 +1,21 @@
+<!-- list -->
+<ul class="nav">
+  <li ng-repeat="top in menus">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="{{top.icon}}"></i>
+      <span class="font-bold">{{top.authorityName}}</span>
+    </a>
+    <ul class="nav nav-sub">
+      <li ng-repeat="menu in top.child" ui-sref-active="active">
+        <a ui-sref="{{menu.authorityMark}}">
+          <span>{{menu.authorityName}}</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<!-- / list -->

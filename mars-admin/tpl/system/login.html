@@ -1,0 +1,20 @@
+<div class="login-box" ng-app="app" ng-controller="LoginController">
+    <div class="login-wrap">
+        <!--img src="../../img/login/title.png" class="title" -->
+        <div class="error">{{errorMessage}}</div>
+        <div class="input-row">
+            <img src="../../img/login/account.png" class="log-tag">
+            <input type="text" class="cm-txt" id="account" placeholder="请输入账户" ng-model="user.userName">
+        </div>
+        <div class="input-row">
+            <img src="../../img/login/password.png" class="log-tag">
+            <input type="password" class="cm-txt" id="pwd" placeholder="请输入密码" ng-model="user.passwd">
+        </div>
+        <div class="input-row">
+            <img src="../../img/login/code.png" class="log-tag code-tag">
+            <input type="text" class="cm-txt code" id="imgCode" placeholder="请输入验证码" ng-model="user.authCode" ng-keyup="enter($event)">
+            <img src="/sys/system/login/captcha.do" id="codImg" ng-click="refresh()">
+        </div>
+        <button type="button" class="login-btn" ng-click="login()">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+    </div>
+</div>

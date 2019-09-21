@@ -1,0 +1,61 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="CodeController as $ctrl">
+        <div class="row  m-sm w-auto">
+            <div class="col-sm-6">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label>类别</label>
+                        <select ng-model="$ctrl.type" class="form-control input-sm" ng-change="$ctrl.query()">
+                            <option value="base">系统编码</option>
+                            <option value="query">查询条件</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="input-sm form-control" ng-model="$ctrl.groupName" placeholder="组名">
+                        <span class="input-group-btn">
+                            <button class="btn btn-sm btn-default" type="button" ng-click="$ctrl.query()"><i class="icon-magnifier"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6 text-right">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>编码</th>
+                    <th>组名</th>
+                    <th>名称</th>
+                    <th>值</th>
+                    <th>排序</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody class="test">
+                <tr ng-repeat="item in $ctrl.codeList">
+                    <td>{{item.code}}</td>
+                    <td>{{item.groupName}}</td>
+                    <td><input type="text" class="form-control w-sm" placeholder="请输入名称" ng-model="item.name" required ng-change="$ctrl.save(item)"></td>
+                    <td>{{item.value}}</td>
+                    <td><input type="text" class="form-control w-xxs" placeholder="请输入名称" ng-model="item.indexnum" required ng-change="$ctrl.save(item)"></td>
+                    <td><input type="text" class="form-control w-md" placeholder="请输入" ng-model="item.remark" required ng-change="$ctrl.save(item)"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="no-data" ng-show="$ctrl.codeList.length <= 0">
+                <i class="fa fa-smile-o"></i>
+                <p>没有数据</p>
+            </div>
+        </div>
+        <pagination total="$ctrl.total" page-change="$ctrl.toPage(pIndex,pSize)" page-size="$ctrl.pageSize" page-index="$ctrl.pageIndex"></pagination>
+    </div>
+</div>

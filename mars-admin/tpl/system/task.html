@@ -1,0 +1,61 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="TaskController as $ctrl">
+        <div class="form-horizontal form-validation panel-body" >
+            <div class="row m-sm font-bold">
+                <div class="col-md-2">
+                    Job Key
+                </div>
+                <div class="col-md-2">
+                    Job 名称
+                </div>
+                <div class="col-md-2">
+                    Job 业务实现类
+                </div>
+                <div class="col-md-2">
+                    执行规则
+                </div>
+                <div class="col-md-1">
+                    运行状态
+                </div>
+                <div class="col-md-3">
+                    备注
+                </div>
+            </div>
+            <div class="row m-sm" ng-repeat="job in $ctrl.jobList">
+                <div class="col-md-2">
+                    <input type="text" class="form-control w-sm" placeholder="请输入" ng-model="job.jobKey" required >
+                </div>
+                <div class="col-md-2">
+                    <input type="number" class="form-control w-sm" placeholder="请输入" ng-model="job.jobName" required >
+                </div>
+                <div class="col-md-2">
+                    <input type="number" class="form-control w-sm" placeholder="请输入" ng-model="job.className" required >
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control w-sm" placeholder="请输入" ng-model="job.triggerRules" required >
+                </div>
+                <div class="col-md-1">
+                    <select class="form-control w-xs" placeholder="请输入" ng-model="job.status" >
+                        <option value="0">启动</option>
+                        <option value="1">运行</option>
+                        <option value="1">停止</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control w-sm" placeholder="请输入" ng-model="job.remark" required >
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer text-right bg-light lter">
+            <button type="submit" class="btn btn-success">保存</button>
+        </footer>
+    </div>
+</div>
+
+

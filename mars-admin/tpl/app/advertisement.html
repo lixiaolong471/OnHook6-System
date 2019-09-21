@@ -1,0 +1,84 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="AppAdvertisementController as $ctrl">
+        <div class="row  m-sm w-auto">
+            <div class="col-sm-6">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label>模块</label>
+                        <select ng-model="$ctrl.section" class="form-control input-sm" ng-change="$ctrl.query()" ng-options="code.value as code.name for code in $ctrl.codeList">
+                            <option value="">-----全部-----</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="m-l-lg">状态</label>
+                        <select ng-model="$ctrl.available" id="available" class="form-control input-sm" ng-change="$ctrl.query()">
+                            <option value="">全部</option>
+                            <option value="true">启用</option>
+                            <option value="false">禁用</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button type="button" class="btn btn btn-info btn-add" ng-click="$ctrl.addAdvertisement()" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="icon-plus"></i> 添加</button>
+                <button type="button" class="btn btn-default btn-delete" ng-click="$ctrl.dataDelete()"><i class="icon-trash"></i> 删除</button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th style="width:20px;">
+                         <label class="i-checks m-b-none">
+                             <input type="checkbox" ng-checked="$ctrl.isCheckAll" ng-click="utils.mtiSelect($ctrl.selectedData,$ctrl.advertisementList,'id','isCheckAll',$ctrl)"><i></i>
+                         </label>
+                     </th>
+                    <th class="w-xl">标题</th>
+                    <th>模块</th>
+                    <th>封面</th>
+                    <th>创建人</th>
+                    <th>创建时间</th>
+                    <th>启用</th>
+                    <th>排序</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="advertisement in $ctrl.advertisementList">
+                    <td><label class="i-checks m-b-none">
+                        <input type="checkbox"
+                               ng-checked="advertisement.selected"
+                               ng-click="utils.radioSelect(advertisement,$ctrl.selectedData,$ctrl.advertisementList,'id','isCheckAll',$ctrl)">
+                        <i></i></label></td>
+                    <td class="text-ellipsis w-xl"><a class="btn-link" ng-click="$ctrl.addAdvertisement(advertisement.id)" title="{{advertisement.title}}">{{advertisement.title}}</a></td>
+                    <td>{{advertisement.section | codes:'wap_destoon_ad_place' }}</td>
+                    <td  ng-click="utils.lookBigPic(advertisement.coverImg)"><img ng-show="advertisement.coverImg != ''" ng-src="{{advertisement.coverImg}}" class="img-box"></td>
+                    <td>{{advertisement['creator.name']}}</td>
+                    <td>{{advertisement.createTime}}</td>
+                    <td>
+                        <label class="i-switch m-t-xs m-r">
+                            <input type="checkbox" ng-model="advertisement.available" ng-click="$ctrl.setAvailable(advertisement.id)">
+                            <i></i>
+                        </label>
+                    </td>
+                    <td>
+                        <a class="fa fa-chevron-circle-up text-info m-t-sm text-lg" ng-click="$ctrl.up(advertisement.id)"></a>
+                        <a class="fa fa-chevron-circle-down text-info m-t-sm text-lg" ng-click="$ctrl.down(advertisement.id)"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="no-data" ng-show="$ctrl.advertisementList.length <= 0">
+                <i class="fa fa-smile-o"></i>
+                <p>没有数据</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<cross-domain-policy>
+<allow-access-from domain="116.23.24.251" />
+</cross-domain-policy>

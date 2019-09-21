@@ -1,0 +1,24 @@
+<div class="hbox col wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  module='base';
+  ">
+    <div class="float-right panel panel-default" ng-controller="ConfigController as $ctrl">
+        <div class="form-horizontal form-validation panel-body" ng-repeat="item in $ctrl.configList">
+            <div class="form-group" ng-repeat="child in item.child">
+                <label class="col-sm-3 control-label">{{child.configname}}</label>
+                <div class="col-sm-9">
+                    <input type="text" ng-hide="child.type != 1" class="form-control w-xl" placeholder="请输入" ng-model="child.configvalue" ng-blur="$ctrl.save(child)" >
+                    <input type="password" ng-hide="child.type != 3" class="form-control w-xl" placeholder="请输入" ng-model="child.configvalue" ng-blur="$ctrl.save(child)" >
+                    <select class="form-control w-xl" ng-hide="child.type != 2" placeholder="请选择" ng-model="child.configvalue" ng-change="$ctrl.save(child)" ng-options="item.value as item.text for item in child.list" ></select>
+                    <select class="form-control w-xl" ng-hide="child.type != 4" placeholder="请选择" ng-model="child.configvalue" ng-change="$ctrl.save(child)">
+                        <option ng-repeat="item in $ctrl.roleList" value="{{item.id}}">{{item.roleName}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

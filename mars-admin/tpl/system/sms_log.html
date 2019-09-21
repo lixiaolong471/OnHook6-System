@@ -1,0 +1,55 @@
+<div class="wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="SmsLogController as $ctrl">
+        <div class="row  m-sm w-auto">
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" class="input-sm form-control" ng-model="$ctrl.tel" placeholder="手机号码">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button" ng-click="$ctrl.query()"><i class="icon-magnifier"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-9 text-right">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>手机号码</th>
+                    <th>编码</th>
+                    <th>内容</th>
+                    <th>返回结果</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>状态时间</th>
+                </tr>
+                </thead>
+                <tbody class="test">
+                    <tr ng-repeat="log in $ctrl.logList">
+                        <td>{{log.tel}}</td>
+                        <td>{{log['template.name']| placeholder}}</td>
+                        <td>{{log.content}}</td>
+                        <td>{{log.resCode}}</td>
+                        <td>{{log.createTime}}</td>
+                        <td>{{log.state| placeholder}}</td>
+                        <td>{{log.stateLogtime| placeholder}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="no-data" ng-show="$ctrl.userPage.length <= 0">
+                <i class="fa fa-smile-o"></i>
+                <p>没有数据</p>
+            </div>
+        </div>
+        <pagination total="$ctrl.total" page-change="$ctrl.toPage(pIndex,pSize)" page-size="$ctrl.pageSize" page-index="$ctrl.pageIndex"></pagination>
+    </div>
+</div>
+
+

@@ -1,0 +1,61 @@
+<div class="wrapper" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  ">
+    <div class="panel panel-default" ng-controller="LoggerController as $ctrl">
+        <div class="row  m-sm w-auto">
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" class="input-sm form-control" ng-model="$ctrl.content" placeholder="内容">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button" ng-click="$ctrl.query()"><i class="icon-magnifier"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-5">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                   <!-- <th style="width:20px;">
+                        <label class="i-checks m-b-none">
+                            <input type="checkbox"><i></i>
+                        </label>
+                    </th>-->
+                    <th>模块</th>
+                    <th>操作类型</th>
+                    <th>浏览器</th>
+                    <th>描述</th>
+                    <th>访问IP</th>
+                    <th>操作时间</th>
+                    <th>操作人</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="log in $ctrl.optlogList">
+                  <!--  <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>-->
+                    <td>{{log.module}}</td>
+                    <td>{{log.optType}}</td>
+                    <td>{{log.browserVersion}}</td>
+                    <td>{{log.remark}}</td>
+                    <td>{{log.ip}}</td>
+                    <td>{{log.createTime}}</td>
+                    <td>{{log['creator.name']}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="no-data" ng-show="$ctrl.optlogList.length <= 0">
+                <i class="fa fa-smile-o"></i>
+                <p>没有数据</p>
+            </div>
+        </div>
+        <pagination total="$ctrl.total" page-change="$ctrl.toPage(pIndex,pSize)" page-size="$ctrl.pageSize" page-index="$ctrl.pageIndex"></pagination>
+    </div>
+</div>
+
+

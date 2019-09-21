@@ -1,0 +1,89 @@
+<div class="hbox hbox-auto-xs" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="UserController as $ctrl">
+  <div class="col w-md w-auto-xs bg-light lter b-r">
+    <div class="row" >
+      <div class="wrapper col-md-12 text-center m-t-xxs"><a class="btn btn-info w" ng-click="$ctrl.addRole()"><i class="fa fa-plus"></i> 新增角色</a></div>
+    </div>
+    <div class="wrapper b-t">
+      <ul class="list-group">
+        <li class="list-group-item" ng-class="{'bg-light':!$ctrl.selectedId}" ng-click="$ctrl.query()">
+          <div class="row"><a href="javascript:void(0)" class="w-100 block padder">全部</a></div></li>
+        <li class="list-group-item" ng-click="$ctrl.query(item.id)" ng-repeat="item in $ctrl.roleList" ng-class="{'bg-light':$ctrl.selectedId == item.id}">
+          <div class="row"><div class="col-md-8"><a href="javascript:void(0)" class="btn-link">{{item.roleName}}</a></div><div class="col-md-4">
+              <a ng-click="$ctrl.addRole(item.id)" title="编辑用户角色"><i class="glyphicon glyphicon-edit l-h-2x text-success m-r-xs"></i></a>
+              <a ng-click="$ctrl.delRole(item.id)" title="删除用户角色" ng-hide="item.reserve"><i class="glyphicon glyphicon-trash l-h-2x text-danger-dk"></i></a>
+          </div></div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="wrapper">
+    <div class="panel panel-default">
+      <div class="row  m-sm">
+        <div class="col-sm-4">
+          <div class="input-group">
+            <input type="text" class="input-sm form-control" placeholder="姓名" ng-model="$ctrl.name">
+            <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button" ng-click="$ctrl.query()"><i class="icon-magnifier"></i></button>
+          </span>
+          </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4 text-right">
+          <button type="button" class="btn btn btn-info btn-add" ng-click="$ctrl.addUser()" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="icon-plus"></i> 新增用户</button>
+          <!-- button type="button" class="btn btn-default btn-delete" ng-click="$ctrl.dataDelete()"><i class="icon-trash"></i> 删除</button-->
+          <button type="button" class="btn btn-default btn-export" ng-click="$ctrl.export()"><i class="fa fa-file-excel-o"></i> 导出</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+          <tr>
+            <th style="width:20px;">
+              <label class="i-checks m-b-none">
+                <input type="checkbox" ng-checked="$ctrl.isCheckAll" ng-click="utils.mtiSelect($ctrl.selectedData,$ctrl.userPage,'id','isCheckAll',$ctrl)"><i></i>
+              </label>
+            </th>
+            <th>姓名</th>
+            <th>登录名</th>
+            <th>上次登录时间</th>
+            <th>密码修改时间</th>
+            <th style="width:80px;">启用</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="user in $ctrl.userPage" ng-init="$ctrl.userPage.length > 0">
+            <td><label class="i-checks m-b-none">
+              <input type="checkbox" name="post[]" ng-checked="user.selected" ng-click="utils.radioSelect(user,$ctrl.selectedData,$ctrl.userPage,'id','isCheckAll',$ctrl)">
+              <i></i></label></td>
+            <td><a class="btn-link" ng-click="$ctrl.addUser(user.id)">{{user.name}}</a></td>
+            <td>{{user.loginName}}</td>
+            <td>{{user.lastLoginTime}}</td>
+            <td>{{user.passwdUpdateTime}}</td>
+            <td>
+              <label class="i-switch m-t-xs m-r" >
+                <input type="checkbox" ng-model="user.available" ng-click="$ctrl.isDisable(user.id)">
+                <i></i>
+              </label>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="no-data" ng-show="$ctrl.userPage.length <= 0">
+          <i class="fa fa-smile-o"></i>
+          <p>没有数据</p>
+        </div>
+      </div>
+      <pagination total="$ctrl.total" page-change="$ctrl.toPage(pIndex,pSize)" page-size="$ctrl.pageSize" page-index="$ctrl.pageIndex"></pagination>
+     </div>
+    </div>
+  </div>
+</div>
+
+

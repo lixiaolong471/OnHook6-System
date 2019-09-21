@@ -1,0 +1,38 @@
+<form name="form-contact" class="form-validation" ng-submit = "$ctrl.sendSms()">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{$ctrl.WindowsTitle}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="panel-body">
+            <div class="form-group clearfix">
+                <label class="col-sm-2 text-right" >用户范围<em class="text-danger">*</em>：</label>
+                <div class="col-sm-4" >
+                	<select ng-model="$ctrl.sendAll" class="form-control">
+                        <option value="true">所有用户</option>
+                        <option value="false">指定用户</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group clearfix" ng-if="$ctrl.sendAll == 'false'"  >
+                <label class="col-sm-2 text-right">手机号码<em class="text-danger">*</em>：</label>
+                <div class="col-sm-10">
+                <textarea class="form-control" rows="3" placeholder="请输入" ng-model="$ctrl.log.phone" required ></textarea>
+              	<p class="text-muted">允许多个手机号用换行分开</p>
+                </div>
+            </div>
+            
+            <div class="form-group clearfix">
+                <label class="col-sm-2 text-right">短信信息<em class="text-danger">*</em>：</label>
+                <div class="col-sm-10">
+                <textarea class="form-control" rows="3" placeholder="请输入" ng-model="$ctrl.log.content" required ></textarea>
+              	<p class="text-muted">如：【小财宝】 *** 回复TD退订</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info w-xs" type="submit">发送</button>
+        <button class="btn btn-default w-xs" type="button" ng-click="$ctrl.cancel()">取消</button>
+    </div>
+</form>
